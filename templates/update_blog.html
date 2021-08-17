@@ -1,0 +1,44 @@
+	{% extends 'index.html' %}
+    {% block content %}
+
+
+		<section id="new-arrivals" class="new-arrivals">
+			<div class="container">
+				<div class="section-header">
+					<h2>Update Products</h2>
+				</div><!--/.section-header-->
+				<div class="new-arrivals-content">
+					<div class="row">
+															{% for product in product1 %}
+
+						<div class="col-md-3 col-sm-4">
+							<div class="single-new-arrival">
+								<div class="single-new-arrival-bg">
+									<img src="{{product.img.url}}" alt="new-arrivals images">
+									<div class="single-new-arrival-bg-overlay"></div>
+									<div class="sale bg-1">
+										<p>sale</p>
+									</div>
+									<div class="new-arrival-cart">
+										<p>
+											<span class="lnr lnr-cart"></span>
+											<a href="#">add <span>to </span> cart</a>
+										</p>
+										<p class="arrival-review pull-right">
+											<a href="{% url 'update' product.id %}"> <span>update</span></a>
+											<a href="{% url 'delete' product.id %}"> <span>delete</span></a>
+										</p>
+									</div>
+								</div>
+								<h4><a href="/shop/{{product.id}}">{{product.name}}</a></h4>
+								<p class="arrival-product-price">${{product.price}}</p>
+							</div>
+						</div>
+						{% endfor %}
+
+					</div>
+				</div>
+			</div><!--/.container-->
+
+		</section><!--/.new-arrivals-->
+    {% endblock %}
